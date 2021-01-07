@@ -1,0 +1,83 @@
+:root {
+    --border-size: 0.2vmin;
+    --big-border-size: 1vmin;
+    --grid-size: 90vmin;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overscroll-behavior: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(9, 1fr);
+    width: var(--grid-size);
+    height: var(--grid-size);
+    column-gap: 0;
+    row-gap: 0;
+    font-family: monospace;
+}
+
+.cell {
+    position: relative;
+    border: var(--border-size) solid black;
+}
+
+.cell.invalid {
+    background-color: red;
+}
+
+.cell:nth-child(n):nth-child(-n+9) {
+    border-top-width: var(--big-border-size);
+}
+
+.cell:nth-child(3n) {
+    border-right-width: var(--big-border-size);
+}
+
+.cell:nth-child(9n+1) {
+    border-left-width: var(--big-border-size);
+}
+
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+73):nth-child(-n+81),
+.cell:nth-child(n+46):nth-child(-n+54) {
+    border-bottom-width: var(--big-border-size);
+}
+
+.fill {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.value {
+    width: 100%;
+    font-size: 4vmin;
+}
+
+.value input {
+    outline: none;
+    padding: 0;
+    border: 0;
+    font-size: 4vmin;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(black, 0);
+}
