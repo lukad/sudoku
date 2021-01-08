@@ -15,16 +15,18 @@ let update = (grid: t, f: Cell.t => Cell.t, index: int) =>
     }
   );
 
-let fill = (grid: t, value: option(int)) =>
-  grid->update(cell =>
-    switch (value) {
-    | Some(v) => {...cell, fill: Cell.Filled(v)}
-    | None => {...cell, fill: Cell.Empty}
-    }
+let fill = (grid: t, index, value: option(int)) =>
+  grid->update(
+    cell =>
+      switch (value) {
+      | Some(v) => {...cell, fill: Cell.Filled(v)}
+      | None => {...cell, fill: Cell.Empty}
+      },
+    index,
   );
 
-let fillStatic = (grid: t, value: int) =>
-  grid->update(cell => {...cell, fill: Cell.Static(value)});
+let fillStatic = (grid: t, index, value: int) =>
+  grid->update(cell => {...cell, fill: Cell.Static(value)}, index);
 
 let region = (grid: t, (x, y)) => {
   let (x, y) = (x * 3, y * 3);
