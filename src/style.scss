@@ -2,6 +2,11 @@
     --border-size: 0.2vmin;
     --big-border-size: 1vmin;
     --grid-size: 90vmin;
+    --bg-color: #F5F5F5;
+    --fg-color: #090909;
+    --static-color: #4F7CAC;
+    --static-error-color: #DC965A;
+    --error-color: #E57A44;
 }
 
 html, body {
@@ -18,6 +23,8 @@ body {
     justify-content: center;
     align-items: center;
     overscroll-behavior: none;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
 }
 
 .grid {
@@ -33,11 +40,19 @@ body {
 
 .cell {
     position: relative;
-    border: var(--border-size) solid black;
+    border: var(--border-size) solid var(--fg-color);
+}
+
+.cell.static {
+    background-color: var(--static-color);
 }
 
 .cell.invalid {
-    background-color: red;
+    background-color: var(--error-color);
+}
+
+.cell.invalid.static {
+    background-color: var(--static-error-color);
 }
 
 .cell:nth-child(n):nth-child(-n+9) {
@@ -69,14 +84,17 @@ body {
 
 .value {
     width: 100%;
-    font-size: 4vmin;
+    font-size: 6vmin;
+    font-family: monospace;
 }
 
 .value input {
+    color: var(--fg-color);
     outline: none;
     padding: 0;
     border: 0;
-    font-size: 4vmin;
+    font-size: 6vmin;
+    font-family: monospace;
     width: 100%;
     text-align: center;
     background-color: rgba(black, 0);

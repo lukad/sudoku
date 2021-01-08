@@ -38,7 +38,7 @@ let make = (~cell: t, ~change: option(int) => unit) => {
     className=Cn.(
       "cell" + "static"->on(isStatic(cell)) + "invalid"->on(!cell.valid)
     )>
-    <div className=Cn.("fill")>
+    <div className="fill">
       <div className="value">
         {switch (cell.fill) {
          | Static(value) => value->string_of_int->React.string

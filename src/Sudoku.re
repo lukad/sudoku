@@ -18,7 +18,7 @@ let make = () => {
       (state: State.t, msg) =>
         switch (msg) {
         | Msg.Change(index, value) =>
-          let cells = Grid.setValue(value, index, state.cells);
+          let cells = Grid.fill(state.cells, value, index);
           let cells = Grid.validate(cells);
           let validCount = Grid.validCount(cells);
           {cells, validCount};
