@@ -1,7 +1,9 @@
 :root {
     --border-size: 0.2vmin;
     --big-border-size: 1vmin;
-    --grid-size: 90vmin;
+    --grid-size: 80vmin;
+    --controls-size: 10vmin;
+    --font-size: 6vmin;
     --bg-color: #F5F5F5;
     --fg-color: #090909;
     --static-color: #BABBC9;
@@ -25,6 +27,7 @@ body {
     overscroll-behavior: none;
     background-color: var(--bg-color);
     color: var(--fg-color);
+    font-family: monospace;
 }
 
 .grid {
@@ -35,7 +38,6 @@ body {
     height: var(--grid-size);
     column-gap: 0;
     row-gap: 0;
-    font-family: monospace;
 }
 
 .cell {
@@ -85,7 +87,6 @@ body {
 .value {
     width: 100%;
     font-size: 6vmin;
-    font-family: monospace;
 }
 
 .value input {
@@ -94,8 +95,44 @@ body {
     padding: 0;
     border: 0;
     font-size: 6vmin;
-    font-family: monospace;
+    font-family: inherit;
     width: 100%;
     text-align: center;
     background-color: rgba(black, 0);
+}
+
+.controls {
+    height: var(--controls-size);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    margin-bottom: 2vmin;
+    align-items: center;
+}
+
+.controls button {
+    font-size: calc(var(--font-size) * 0.6);
+    font-family: inherit;
+    height: 100%;
+    width: calc(var(--grid-size) / 9 * 3);
+    margin: 0;
+    padding: 1vmin 2vmin;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--static-color);
+    color: var(--fg-color);
+    border: calc(var(--big-border-size)) solid var(--fg-color);
+    cursor: pointer;
+    display: inline;
+
+    &:hover,
+    &:focus {
+        font-weight: 600;
+    }
+}
+
+.controls .time {
+    display: block;
+    font-size: calc(var(--font-size) * 0.8);
+    text-align: right;
 }
